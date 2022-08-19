@@ -29,3 +29,36 @@ describe('constructor', () => {
       expect(pet.fitness).toEqual(7);
     });
   });
+
+  describe('walk', () => {
+    it('increases fitness by 4 to a max of 10', () => {
+      const pet = new Pet('Fluffy');
+  
+      pet.fitness = 4;
+      pet.walk();
+  
+      expect(pet.fitness).toEqual(8);
+    });
+  });
+
+  describe('feed', () => {
+    it('increases hunger by 3 to a max of 10', () => {
+      const pet = new Pet('Fluffy');
+
+      pet.hunger = 3;
+      pet.feed();
+
+      expect(pet.hunger).toEqual(6)
+    });
+  });
+
+  describe('checkUp', () => {
+    it("returns I'm hungry AND need a walk when fitness < 4 & hunger > 3 ", () =>{
+      const pet = new Pet('Fluffy');
+
+      pet.fitness = 4 - 1;
+      pet.hunger = 3 + 1;
+      
+      expect(pet.checkUp()).toBe("I'm hungry AND need a walk");
+    });
+  });
